@@ -1,0 +1,12 @@
+<div class="form-container">
+    <h2>Add Employee</h2>
+    <form (ngSubmit)="submitForm()">
+      <label>First Name: <input [(ngModel)]="newEmployee.firstName" name="firstName" required></label>
+      <label>Last Name: <input [(ngModel)]="newEmployee.lastName" name="lastName" required></label>
+      <label>DOB: <input type="date" [(ngModel)]="newEmployee.dob" name="dob" required></label>
+      <label>Blood Group: <input [(ngModel)]="newEmployee.bloodGroup" name="bloodGroup" required></label>
+      <label>Mobile: <input type="tel" [(ngModel)]="newEmployee.mobile" name="mobile" required></label>
+      <label>Email: <input type="email" [(ngModel)]="newEmployee.email" name="email" required></label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
