@@ -1,4 +1,5 @@
 <div class="container">
+  <app-employee-form (employeeAdded)="addEmployee($event)"></app-employee-form>
     <h2>Employee Details</h2>
     <table>
       <tr>
@@ -18,5 +19,5 @@
         <td>{{ employee.email }}</td>
       </tr>
     </table>
-    <app-employee-form (employeeAdded)="addEmployee($event)"></app-employee-form>
+    
   </div>

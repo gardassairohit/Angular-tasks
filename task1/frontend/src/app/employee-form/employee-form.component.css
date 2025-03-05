@@ -1,34 +1,65 @@
+
 .form-container {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #f9f9f9;
-    max-width: 400px;
-    margin: auto;
-  }
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  input {
-    width: 96%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  button {
-    display: block;
-    width: 100%;
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-  
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+input {
+  width: 95%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+button {
+  width: 100%;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 14px;
+  margin-top: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(to right, #0056b3, #003b82);
+  transform: scale(1.05);
+}
+
+
+
+
+.error-message {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+  background: #ffe6e6;
+}

@@ -1,12 +1,42 @@
 <div class="form-container">
-    <h2>Add Employee</h2>
-    <form (ngSubmit)="submitForm()">
-      <label>First Name: <input [(ngModel)]="newEmployee.firstName" name="firstName" required></label>
-      <label>Last Name: <input [(ngModel)]="newEmployee.lastName" name="lastName" required></label>
-      <label>DOB: <input type="date" [(ngModel)]="newEmployee.dob" name="dob" required></label>
-      <label>Blood Group: <input [(ngModel)]="newEmployee.bloodGroup" name="bloodGroup" required></label>
-      <label>Mobile: <input type="tel" [(ngModel)]="newEmployee.mobile" name="mobile" required></label>
-      <label>Email: <input type="email" [(ngModel)]="newEmployee.email" name="email" required></label>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
+  <h2>Add Employee</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+    <label>First Name</label>
+    <input type="text" formControlName="firstName" />
+    <div class="error-message" *ngIf="employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched">
+      First Name is required (min 2 characters)
+    </div>
+
+    <label>Last Name</label>
+    <input type="text" formControlName="lastName" />
+    <div class="error-message" *ngIf="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched">
+      Last Name is required (min 2 characters)
+    </div>
+
+    <label>Date of Birth</label>
+    <input type="date" formControlName="dob" />
+    <div class="error-message" *ngIf="employeeForm.get('dob')?.invalid && employeeForm.get('dob')?.touched">
+      Date of Birth is required
+    </div>
+
+    <label>Blood Group</label>
+    <input type="text" formControlName="bloodGroup" />
+    <div class="error-message" *ngIf="employeeForm.get('bloodGroup')?.invalid && employeeForm.get('bloodGroup')?.touched">
+      Blood Group is required
+    </div>
+
+    <label>Mobile</label>
+    <input type="text" formControlName="mobile" />
+    <div class="error-message" *ngIf="employeeForm.get('mobile')?.invalid && employeeForm.get('mobile')?.touched">
+      Enter a valid 10-digit mobile number
+    </div>
+
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+    <div class="error-message" *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
+      Enter a valid email address
+    </div>
+
+    <button type="submit" [disabled]="employeeForm.invalid">Submit</button>
+  </form>
+</div>
