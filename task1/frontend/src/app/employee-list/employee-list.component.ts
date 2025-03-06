@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 
 @Component({
   selector: 'app-employee-list',
   standalone: true,
-  imports: [NgFor, EmployeeFormComponent],
+  imports: [CommonModule, NgFor, EmployeeFormComponent],
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
