@@ -5,6 +5,6 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
   selector: 'app-root',
   standalone: true,
   imports: [EmployeeListComponent],
-  template: `<app-employee-list></app-employee-list>`
+  templateUrl: `./app.component.html`
 })
 export class AppComponent {}
