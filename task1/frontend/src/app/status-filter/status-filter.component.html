@@ -1,0 +1,10 @@
+<div class="status-filter">
+    <h3>Filter by Status</h3>
+    <div *ngFor="let status of statusOptions">
+      <label>
+        <input type="checkbox" (change)="toggleStatus(status)" [checked]="selectedStatuses.includes(status)" />
+        {{ status }}
+      </label>
+    </div>
+  </div>
+  

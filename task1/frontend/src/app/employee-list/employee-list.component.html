@@ -1,23 +1,23 @@
-<div class="container">
-  <app-employee-form (employeeAdded)="addEmployee($event)"></app-employee-form>
-    <h2>Employee Details</h2>
-    <table>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>DOB</th>
-        <th>Blood Group</th>
-        <th>Mobile</th>
-        <th>Email</th>
-      </tr>
-      <tr *ngFor="let employee of employees">
-        <td>{{ employee.firstName }}</td>
-        <td>{{ employee.lastName }}</td>
-        <td>{{ employee.dob }}</td>
-        <td>{{ employee.bloodGroup }}</td>
-        <td>{{ employee.mobile }}</td>
-        <td>{{ employee.email }}</td>
-      </tr>
-    </table>
-    
-  </div>
+<div class="employee-list">
+  <h2>Employee List</h2>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date of Birth</th>
+      <th>Blood Group</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let employee of filteredEmployees">
+      <td>{{ employee.firstName }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.dob }}</td>
+      <td>{{ employee.bloodGroup }}</td>
+      <td>{{ employee.mobile }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.status }}</td>
+    </tr>
+  </table>
+</div>

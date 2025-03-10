@@ -1,34 +1,40 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.css'],
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule]
 })
 export class EmployeeFormComponent {
   @Output() employeeAdded = new EventEmitter<any>();
+  employee = {
+    firstName: '',
+    lastName: '',
+    dob: '',
+    bloodGroup: '',
+    mobile: '',
+    email: '',
+    status: 'Pending',
+  };
 
-  employeeForm: FormGroup;
+  statusOptions = ['Completed', 'Pending', 'In Progress', 'Cancelled'];
 
-  constructor(private fb: FormBuilder) {
-    this.employeeForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['', [Validators.required, Validators.minLength(2)]],
-      dob: ['', Validators.required],
-      bloodGroup: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
-      email: ['', [Validators.required, Validators.email]]
-    });
-  }
-
-  submitForm() {
-    if (this.employeeForm.valid) {
-      this.employeeAdded.emit(this.employeeForm.value);
-      this.employeeForm.reset();
+  addEmployee() {
+    if (this.employee.firstName && this.employee.lastName) {
+      this.employeeAdded.emit({ ...this.employee });
+      this.employee = {
+        firstName: '',
+        lastName: '',
+        dob: '',
+        bloodGroup: '',
+        mobile: '',
+        email: '',
+        status: 'Pending',
+      };
     }
   }
 }

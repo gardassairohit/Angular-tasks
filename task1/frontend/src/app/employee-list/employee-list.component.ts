@@ -1,20 +1,32 @@
-import { Component } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
-import { EmployeeFormComponent } from '../employee-form/employee-form.component';
+import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FilterService } from '../services/filter.service';
 
 @Component({
   selector: 'app-employee-list',
   standalone: true,
-  imports: [CommonModule, NgFor, EmployeeFormComponent],
+  imports: [CommonModule],
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
+  styleUrls: ['./employee-list.component.css'],
 })
-export class EmployeeListComponent {
-  employees = [
-    { firstName: 'John', lastName: 'Doe', dob: '1990-01-01', bloodGroup: 'O+', mobile: '1234567890', email: 'john@example.com' }
-  ];
+export class EmployeeListComponent implements OnInit {
+  @Input() employees: any[] = [];
+  filteredEmployees: any[] = [];
 
-  addEmployee(employee: any) {
-    this.employees.push(employee);
+  constructor(private statusFilterService: FilterService) {}
+
+  ngOnInit() {
+    this.statusFilterService.statusChanges$.subscribe((selectedStatuses) => {
+      this.filterEmployees(selectedStatuses);
+    });
+    this.filteredEmployees = this.employees; // Initial display
+  }
+
+  filterEmployees(selectedStatuses: string[]) {
+    if (selectedStatuses.length === 0) {
+      this.filteredEmployees = this.employees;
+    } else {
+      this.filteredEmployees = this.employees.filter((emp) => selectedStatuses.includes(emp.status));
+    }
   }
 }
