@@ -1,16 +1,73 @@
-<div class="employee-form">
+<div class="form-container">
   <h2>Add Employee</h2>
-  <input type="text" placeholder="First Name" [(ngModel)]="employee.firstName" />
-  <input type="text" placeholder="Last Name" [(ngModel)]="employee.lastName" />
-  <input type="date" [(ngModel)]="employee.dob" />
-  <input type="text" placeholder="Blood Group" [(ngModel)]="employee.bloodGroup" />
-  <input type="text" placeholder="Mobile" [(ngModel)]="employee.mobile" />
-  <input type="email" placeholder="Email" [(ngModel)]="employee.email" />
+  
+  <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+    <div class="input-group">
+      <label>First Name</label>
+      <input type="text" formControlName="firstName" />
+      <small *ngIf="employeeForm.controls['firstName'].invalid && employeeForm.controls['firstName'].touched">
+        First Name is required
+      </small>
+    </div>
 
-  <!-- Status Dropdown -->
-  <select [(ngModel)]="employee.status">
-    <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
-  </select>
+    <div class="input-group">
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName" />
+      <small *ngIf="employeeForm.controls['lastName'].invalid && employeeForm.controls['lastName'].touched">
+        Last Name is required
+      </small>
+    </div>
 
-  <button (click)="addEmployee()">Add Employee</button>
+    <div class="input-group">
+      <label>Date of Birth</label>
+      <input type="date" formControlName="dob" />
+      <small *ngIf="employeeForm.controls['dob'].invalid && employeeForm.controls['dob'].touched">
+        Date of Birth is required
+      </small>
+    </div>
+
+    <div class="input-group">
+      <label>Blood Group</label>
+      <select formControlName="bloodGroup">
+        <option value="" disabled>Select</option>
+        <option *ngFor="let group of ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']" [value]="group">
+          {{ group }}
+        </option>
+      </select>
+      <small *ngIf="employeeForm.controls['bloodGroup'].invalid && employeeForm.controls['bloodGroup'].touched">
+        Blood Group is required
+      </small>
+    </div>
+
+    <div class="input-group">
+      <label>Mobile</label>
+      <input type="text" formControlName="mobile" />
+      <small *ngIf="employeeForm.controls['mobile'].invalid && employeeForm.controls['mobile'].touched">
+        Enter a valid 10-digit mobile number
+      </small>
+    </div>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" formControlName="email" />
+      <small *ngIf="employeeForm.controls['email'].invalid && employeeForm.controls['email'].touched">
+        Enter a valid email address
+      </small>
+    </div>
+
+    <div class="input-group">
+      <label>Status</label>
+      <select formControlName="status">
+        <option value="" disabled>Select</option>
+        <option *ngFor="let status of ['Completed', 'Pending', 'In Progress', 'Cancelled']" [value]="status">
+          {{ status }}
+        </option>
+      </select>
+      <small *ngIf="employeeForm.controls['status'].invalid && employeeForm.controls['status'].touched">
+        Status is required
+      </small>
+    </div>
+
+    <button type="submit" [disabled]="employeeForm.invalid">Submit</button>
+  </form>
 </div>

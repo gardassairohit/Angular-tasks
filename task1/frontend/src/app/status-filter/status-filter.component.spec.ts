@@ -1,26 +1,23 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { StatusFilterService } from '../status-filter.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-status-filter',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './status-filter.component.html',
-  styleUrls: ['./status-filter.component.css'],
-})
-export class StatusFilterComponent {
-  statusOptions = ['Completed', 'Pending', 'In Progress', 'Cancelled'];
-  selectedStatuses: string[] = [];
+import { StatusFilterComponent } from './status-filter.component';
 
-  constructor(private statusFilterService: StatusFilterService) {}
+describe('StatusFilterComponent', () => {
+  let component: StatusFilterComponent;
+  let fixture: ComponentFixture<StatusFilterComponent>;
 
-  toggleStatus(status: string) {
-    if (this.selectedStatuses.includes(status)) {
-      this.selectedStatuses = this.selectedStatuses.filter((s) => s !== status);
-    } else {
-      this.selectedStatuses.push(status);
-    }
-    this.statusFilterService.updateSelectedStatuses(this.selectedStatuses);
-  }
-}
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [StatusFilterComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(StatusFilterComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

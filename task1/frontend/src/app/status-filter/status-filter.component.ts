@@ -1,26 +1,21 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FilterService } from '../services/filter.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-status-filter',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgFor],
   templateUrl: './status-filter.component.html',
-  styleUrls: ['./status-filter.component.css'],
+  styleUrl: './status-filter.component.css'
 })
 export class StatusFilterComponent {
-  statusOptions = ['Completed', 'Pending', 'In Progress', 'Cancelled'];
-  selectedStatuses: string[] = [];
+  // Define available statuses
+  statusOptions: string[] = ['Completed', 'Pending', 'In Progress', 'Cancelled'];
 
-  constructor(private statusFilterService: FilterService) {}
+  constructor(private filterService: FilterService) {}
 
-  toggleStatus(status: string) {
-    if (this.selectedStatuses.includes(status)) {
-      this.selectedStatuses = this.selectedStatuses.filter((s) => s !== status);
-    } else {
-      this.selectedStatuses.push(status);
-    }
-    this.statusFilterService.updateSelectedStatuses(this.selectedStatuses);
+  toggleStatus(status: string): void {
+    this.filterService.toggleStatus(status);
   }
 }
