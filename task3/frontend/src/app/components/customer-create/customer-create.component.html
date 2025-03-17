@@ -1,0 +1,30 @@
+<h5>
+    Create customer
+</h5>
+<button mat-flat-button [routerLink]="'/'">Back to the list</button>
+
+<div class="mat-elevation-z2 p-2">
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Enter the name</mat-label>
+            <input matInput placeholder="John Doe" formControlName="name">
+            <mat-icon matSuffix>person</mat-icon>
+            
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Enter the email</mat-label>
+            <input matInput placeholder="johndoe@example.com" formControlName="email">
+            <mat-icon matSuffix>mail</mat-icon>
+            
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Enter mobile no.</mat-label>
+            <input matInput placeholder="9876501234" formControlName="phone">
+            <mat-icon matSuffix>phone</mat-icon>
+            
+        </mat-form-field>
+
+        <button mat-flat-button type="submit">Create</button>
+        <button mat-flat-button type="reset">Cancel</button>
+    </form>
+</div>
