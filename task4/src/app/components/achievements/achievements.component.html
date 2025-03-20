@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Achievements</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="saveDetails()">
+      <mat-form-field>
+        <input matInput placeholder="Awards" [(ngModel)]="achievements.awards" name="awards" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Certifications" [(ngModel)]="achievements.certifications" name="certifications" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </form>
+  </mat-card-content>
+</mat-card>

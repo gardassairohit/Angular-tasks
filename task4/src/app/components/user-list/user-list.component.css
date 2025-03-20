@@ -1,0 +1,26 @@
+/* User List Container */
+.user-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* User List Header */
+mat-card-header {
+  margin-bottom: 20px;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #3f51b5; /* Angular Material primary color */
+}
+
+/* List Items */
+mat-list-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+mat-list-item:last-child {
+  border-bottom: none;
+}

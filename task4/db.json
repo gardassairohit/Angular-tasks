@@ -1,0 +1,134 @@
+{
+  "users": [
+    {
+      "id": "8559",
+      "username": "student1",
+      "email": "nani915460@gmail.com",
+      "password": "student",
+      "personalDetails": {
+        "firstName": "abc",
+        "lastName": "def",
+        "dateOfBirth": "04/05/2004",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "achievements": {
+        "awards": "Best Event",
+        "certifications": "Internship"
+      },
+      "familyDetails": {
+        "fatherName": "Father",
+        "motherName": "Mother",
+        "siblings": "Sibling1, Sibling2"
+      }
+    },
+    {
+      "id": "a85c",
+      "username": "admin",
+      "email": "super45hitman@gmail.com",
+      "password": "nani99",
+      "personalDetails": {
+        "firstName": "Sai Rohit",
+        "lastName": "Gardas",
+        "dateOfBirth": "04/05/2004",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "achievements": {
+        "awards": "Best Event",
+        "certifications": "Internship"
+      },
+      "familyDetails": {
+        "fatherName": "Srisailam",
+        "motherName": "Srilatha",
+        "siblings": "Sumeet, Akshaya"
+      }
+    },
+    {
+      "id": "2982",
+      "username": "testuser",
+      "email": "testuser@example.com",
+      "password": "test",
+      "personalDetails": {
+        "firstName": "Test",
+        "lastName": "User",
+        "dateOfBirth": "01/01/2000",
+        "gender": "Male"
+      },
+      "achievements": {
+        "awards": "A",
+        "certifications": "C"
+      },
+      "familyDetails": {
+        "fatherName": "F",
+        "motherName": "M",
+        "siblings": "S"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      }
+    },
+    {
+      "id": "1535",
+      "username": "hitman",
+      "email": "super45hitman@gmail.com",
+      "password": "hitman",
+      "personalDetails": {
+        "firstName": "Rohit",
+        "lastName": "Sharma",
+        "dateOfBirth": "30/04/1987",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "Captain",
+        "institution": "BCCI",
+        "yearOfGraduation": "2007"
+      },
+      "achievements": {
+        "awards": "BEST CAPTAIN OF ALL TIME",
+        "certifications": "CHAMPIONS TROPHY, T20 WORLD CUP"
+      },
+      "familyDetails": {
+        "fatherName": "Gurunath Sharma",
+        "motherName": "Purnima Sharma",
+        "siblings": "Vishal Sharma"
+      }
+    },
+    {
+      "id": "80e3",
+      "username": "student2",
+      "email": "student2@gmail.com",
+      "password": "student",
+      "personalDetails": {
+        "firstName": "Student",
+        "lastName": "2",
+        "dateOfBirth": "01/01/2000",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "achievements": {
+        "awards": "ABCD",
+        "certifications": "EFGH"
+      },
+      "familyDetails": {
+        "fatherName": "Father",
+        "motherName": "Mother",
+        "siblings": "Sibling1, Sibling2"
+      }
+    }
+  ]
+}

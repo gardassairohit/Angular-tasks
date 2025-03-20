@@ -1,0 +1,29 @@
+<mat-card *ngIf="user">
+  <mat-card-header>
+    <mat-card-title>{{ user.username }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="Personal Details">
+        <p>First Name: {{ user.personalDetails?.firstName }}</p>
+        <p>Last Name: {{ user.personalDetails?.lastName }}</p>
+        <p>Date of Birth: {{ user.personalDetails?.dateOfBirth }}</p>
+        <p>Gender: {{ user.personalDetails?.gender }}</p>
+      </mat-tab>
+      <mat-tab label="Educational Details">
+        <p>Highest Degree: {{ user.educationalDetails?.highestDegree }}</p>
+        <p>Institution: {{ user.educationalDetails?.institution }}</p>
+        <p>Year of Graduation: {{ user.educationalDetails?.yearOfGraduation }}</p>
+      </mat-tab>
+      <mat-tab label="Achievements">
+        <p>Awards: {{ user.achievements?.awards }}</p>
+        <p>Certifications: {{ user.achievements?.certifications }}</p>
+      </mat-tab>
+      <mat-tab label="Family Details">
+        <p>Father's Name: {{ user.familyDetails?.fatherName }}</p>
+        <p>Mother's Name: {{ user.familyDetails?.motherName }}</p>
+        <p>Siblings: {{ user.familyDetails?.siblings }}</p>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
