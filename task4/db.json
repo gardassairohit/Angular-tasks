@@ -129,6 +129,215 @@
         "motherName": "Mother",
         "siblings": "Sibling1, Sibling2"
       }
+    },
+    {
+      "id": "4109",
+      "username": "test2",
+      "email": "test2@gmail.com",
+      "password": "123",
+      "personalDetails": {
+        "firstName": "Sai Rohit",
+        "lastName": "sdfs",
+        "dateOfBirth": "fsdfs",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "34235",
+        "yearOfGraduation": "sdfds"
+      },
+      "achievements": {
+        "awards": "dsfdf",
+        "certifications": "dsfdsf"
+      },
+      "familyDetails": {
+        "fatherName": "dsf",
+        "motherName": "sdfsd",
+        "siblings": "sdfsd"
+      }
+    },
+    {
+      "id": "16cc",
+      "username": "gsr123",
+      "email": "gsr@gmail.com",
+      "password": "gsr123",
+      "confirmPassword": "gsr123",
+      "personalDetails": {
+        "firstName": "G",
+        "lastName": "SR",
+        "dateOfBirth": "2004-05-03T18:30:00.000Z",
+        "gender": "Male"
+      }
+    },
+    {
+      "id": "d953",
+      "username": "abcdef",
+      "email": "abc@def.ghi",
+      "password": "abcdef",
+      "confirmPassword": "abcdef",
+      "personalDetails": {
+        "firstName": "ABC",
+        "lastName": "DEF",
+        "dateOfBirth": "2004-05-03T18:30:00.000Z",
+        "gender": "Male"
+      }
+    },
+    {
+      "id": "f8dd",
+      "username": "ABCDEF",
+      "email": "abcdef@gh",
+      "password": "abcdef",
+      "confirmPassword": "abcdef",
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "personalDetails": {
+        "firstName": "abc",
+        "lastName": "def",
+        "dateOfBirth": "21/03/2025",
+        "gender": "Male"
+      },
+      "achievements": {
+        "awards": "Best Event",
+        "certifications": "Internship"
+      },
+      "familyDetails": {
+        "fatherName": "Father",
+        "motherName": "Mother",
+        "siblings": "Sibling1, Sibling2"
+      }
+    },
+    {
+      "id": "af28",
+      "username": "user",
+      "email": "user@example.com",
+      "password": "user99",
+      "confirmPassword": "user99",
+      "personalDetails": {
+        "firstName": "User",
+        "lastName": "One",
+        "dateOfBirth": "04/05/2004",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "achievements": {
+        "awards": "Award1, Award2",
+        "certifications": "Certificate1, Certificate2"
+      },
+      "familyDetails": {
+        "fatherName": "Father",
+        "motherName": "Mother",
+        "siblings": "Sibling1, Sibling2"
+      }
+    },
+    {
+      "id": "c60c",
+      "username": "user2",
+      "email": "user2@gmail.com",
+      "password": "user92",
+      "confirmPassword": "user92",
+      "personalDetails": {
+        "firstName": "User",
+        "lastName": "Two",
+        "dateOfBirth": "01/01/2000",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "",
+        "institution": "",
+        "yearOfGraduation": null
+      },
+      "achievements": {
+        "awards": [],
+        "certifications": []
+      }
+    },
+    {
+      "id": "305c",
+      "username": "user3",
+      "email": "user3@gmail.com",
+      "password": "user93",
+      "confirmPassword": "user93",
+      "personalDetails": {
+        "firstName": "User",
+        "lastName": "Three",
+        "dateOfBirth": "01/03/2025",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "achievements": {
+        "awards": "Award1, Award2",
+        "certifications": "Certificate1, Certificate2"
+      },
+      "familyDetails": {
+        "fatherName": "Father",
+        "motherName": "Mother",
+        "siblings": "Sibling1, Sibling2"
+      }
+    },
+    {
+      "id": "9d6a",
+      "username": "gsrnani",
+      "email": "gardassairohit@gmail.com",
+      "password": "Gsrn@ni99",
+      "confirmPassword": "Gsrn@ni99",
+      "personalDetails": {
+        "firstName": "Sai Rohit",
+        "lastName": "Gardas",
+        "dateOfBirth": "04/05/2004",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "achievements": {
+        "awards": "Best Event",
+        "certifications": "Internship"
+      },
+      "familyDetails": {
+        "fatherName": "Srisailam",
+        "motherName": "Srilatha",
+        "siblings": "Sumeet, Akshaya"
+      }
+    },
+    {
+      "id": "af3f",
+      "username": "gsrnani1",
+      "email": "gardassairohit@gmail.com",
+      "password": "gsrnani99",
+      "confirmPassword": "gsrnani99",
+      "personalDetails": {
+        "firstName": "Sai Rohit",
+        "lastName": "Gardas",
+        "dateOfBirth": "04/05/2004",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "achievements": {
+        "awards": "Best Event",
+        "certifications": "Internship"
+      },
+      "familyDetails": {
+        "fatherName": "Srisailam",
+        "motherName": "Srilatha",
+        "siblings": "Sumeet, Akshaya"
+      }
     }
   ]
 }

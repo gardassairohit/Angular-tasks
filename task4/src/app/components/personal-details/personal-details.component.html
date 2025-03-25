@@ -4,19 +4,35 @@
   </mat-card-header>
   <mat-card-content>
     <form (ngSubmit)="saveDetails()">
-      <mat-form-field>
-        <input matInput placeholder="First Name" [(ngModel)]="personalDetails.firstName" name="firstName" required>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="First Name" [(ngModel)]="personalDetails.firstName" name="firstName" required pattern="[A-Za-z ]+" #firstName="ngModel">
+        <mat-error *ngIf="firstName.invalid && firstName.touched">First Name is required and should contain only letters.</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Last Name" [(ngModel)]="personalDetails.lastName" name="lastName" required>
+      
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Last Name" [(ngModel)]="personalDetails.lastName" name="lastName" required pattern="[A-Za-z]+" #lastName="ngModel">
+        <mat-error *ngIf="lastName.invalid && lastName.touched">Last Name is required and should contain only letters.</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Date of Birth" [(ngModel)]="personalDetails.dateOfBirth" name="dateOfBirth" required>
+
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="picker" placeholder="Date of Birth" [(ngModel)]="personalDetails.dateOfBirth" name="dateOfBirth" required #dateOfBirth="ngModel">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="dateOfBirth.invalid && dateOfBirth.touched">Date of Birth is required.</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Gender" [(ngModel)]="personalDetails.gender" name="gender" required>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Gender</mat-label>
+        <mat-select [(ngModel)]="personalDetails.gender" name="gender" required #gender="ngModel">
+          <mat-option value="Male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+        </mat-select>
+        <mat-error *ngIf="gender.invalid && gender.touched">Please select a gender.</mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Save</button>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="firstName.invalid || lastName.invalid || dateOfBirth.invalid || gender.invalid">
+        Save
+      </button>
     </form>
   </mat-card-content>
 </mat-card>

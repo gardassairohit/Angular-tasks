@@ -8,10 +8,11 @@ import { EducationalDetailsComponent } from './components/educational-details/ed
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { FamilyDetailsComponent } from './components/family-details/family-details.component';
 import { AuthGuard } from './guards/auth.guard'; // Import the AuthGuard
+import { LoginGuard } from './guards/login.guard';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] }, // Protected route
   { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard] }, // Protected route
   { path: 'user-details/:id', component: UserDetailsComponent, canActivate: [AuthGuard] }, // Protected route
   { path: 'personal-details', component: PersonalDetailsComponent, canActivate: [AuthGuard] }, // Protected route

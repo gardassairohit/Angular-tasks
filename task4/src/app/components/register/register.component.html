@@ -1,24 +1,53 @@
-<mat-card>
+<mat-card class="form-container">
   <mat-card-header>
     <mat-card-title>Register</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (ngSubmit)="register()">
-      <mat-form-field>
-        <input matInput placeholder="Username" [(ngModel)]="user.username" name="username" required>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Username" formControlName="username">
+        <mat-error *ngIf="registerForm.get('username')?.hasError('required')">
+          Username is required.
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('username')?.hasError('minlength')">
+          Username must be at least 3 characters.
+        </mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" required>
+
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+          Email is required.
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+          Invalid email format.
+        </mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+
+      <mat-form-field appearance="outline">
+        <input matInput type="password" placeholder="Password" formControlName="password">
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+          Password is required.
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+          Password must be at least 6 characters.
+        </mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+
+      <mat-form-field appearance="outline">
+        <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+        <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
+          Confirm Password is required.
+        </mat-error>
+        <mat-error *ngIf="registerForm.hasError('mismatch')">
+          Passwords do not match.
+        </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Register</button>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
     </form>
   </mat-card-content>
+  
   <mat-card-actions>
     <p>Already have an account? <a routerLink="/login">Login here</a></p>
   </mat-card-actions>

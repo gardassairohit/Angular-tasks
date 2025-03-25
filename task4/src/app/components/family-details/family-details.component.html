@@ -4,13 +4,13 @@
   </mat-card-header>
   <mat-card-content>
     <form (ngSubmit)="saveDetails()">
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <input matInput placeholder="Father's Name" [(ngModel)]="familyDetails.fatherName" name="fatherName" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <input matInput placeholder="Mother's Name" [(ngModel)]="familyDetails.motherName" name="motherName" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <input matInput placeholder="Siblings" [(ngModel)]="familyDetails.siblings" name="siblings" required>
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit">Save</button>

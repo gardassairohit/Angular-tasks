@@ -3,14 +3,51 @@
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (ngSubmit)="login()">
-      <mat-form-field>
-        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <!-- Username Field -->
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          placeholder="Username"
+          formControlName="username"
+        />
+        <mat-error *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)">
+          <div *ngIf="loginForm.get('username')?.errors?.['required']">
+            Username is required.
+          </div>
+          <div *ngIf="loginForm.get('username')?.errors?.['minlength']">
+            Username must be at least 3 characters long.
+          </div>
+        </mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+
+      <!-- Password Field -->
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <mat-error *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+          <div *ngIf="loginForm.get('password')?.errors?.['required']">
+            Password is required.
+          </div>
+          <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            Password must be at least 6 characters long.
+          </div>
+        </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Login</button>
+
+      <!-- Submit Button -->
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
     </form>
   </mat-card-content>
   <mat-card-actions>
