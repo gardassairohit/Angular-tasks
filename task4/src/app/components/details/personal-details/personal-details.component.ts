@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,13 +10,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-personal-details',
   standalone: true,
   imports: [
-    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -29,31 +30,35 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./personal-details.component.css']
 })
 export class PersonalDetailsComponent {
-  personalDetails = {
-    firstName: '',
-    lastName: '',
-    dateOfBirth: '',
-    gender: ''
-  };
-  
-  constructor(private userService: UserService, private router: Router) {}
+  personalDetailsForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+    this.personalDetailsForm = this.fb.group({
+      firstName: ['', [Validators.required, Validators.pattern('[A-Za-z ]+')]],
+      lastName: ['', [Validators.required, Validators.pattern('[A-Za-z]+')]],
+      dateOfBirth: ['', Validators.required],
+      gender: ['', Validators.required]
+    });
+  }
 
   saveDetails() {
-    if (!this.personalDetails.firstName.trim() || !this.personalDetails.lastName.trim() || !this.personalDetails.dateOfBirth || !this.personalDetails.gender) {
+    if (this.personalDetailsForm.invalid) {
       alert('Please fill in all required fields correctly.');
       return;
     }
-  
-    // Format date to DD/MM/YYYY before storing
-    const date = new Date(this.personalDetails.dateOfBirth);
-    const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
-    this.personalDetails.dateOfBirth = formattedDate;
-  
+
+    let personalDetails = this.personalDetailsForm.value;
+    
+    // Format date to DD/MM/YYYY
+    const date = new Date(personalDetails.dateOfBirth);
+    personalDetails.dateOfBirth = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
+
     const currentUser = JSON.parse(localStorage.getItem('currentUser')!);
-    const updatedUser = { ...currentUser, personalDetails: this.personalDetails };
+    const updatedUser = { ...currentUser, personalDetails };
+    
     this.userService.updateUser(updatedUser).subscribe(() => {
       localStorage.setItem('currentUser', JSON.stringify(updatedUser));
       this.router.navigate(['/details/educational-details']);
     });
-  }  
-}  
+  }
+}

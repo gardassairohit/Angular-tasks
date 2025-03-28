@@ -3,17 +3,39 @@
     <mat-card-title>Family Details</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (ngSubmit)="saveDetails()">
+    <form [formGroup]="familyForm" (ngSubmit)="saveDetails()">
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Father's Name" [(ngModel)]="familyDetails.fatherName" name="fatherName" required>
+        <input matInput placeholder="Father's Name" formControlName="fatherName">
+        <mat-error *ngIf="familyForm.get('fatherName')?.invalid && familyForm.get('fatherName')?.touched">
+          Father's name is required
+        </mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Mother's Name" [(ngModel)]="familyDetails.motherName" name="motherName" required>
+        <input matInput placeholder="Mother's Name" formControlName="motherName">
+        <mat-error *ngIf="familyForm.get('motherName')?.invalid && familyForm.get('motherName')?.touched">
+          Mother's name is required
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Siblings" [(ngModel)]="familyDetails.siblings" name="siblings" required>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Save</button>
+
+      <div formArrayName="siblings">
+        <div *ngFor="let sibling of siblings.controls; let i = index">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Sibling Name" [formControlName]="i">
+            <mat-error *ngIf="siblings.at(i).invalid && siblings.at(i).touched">
+              Sibling name is required
+            </mat-error>
+          </mat-form-field>
+          <button mat-icon-button color="warn" (click)="removeSibling(i)" *ngIf="siblings.length > 1">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <button mat-raised-button color="accent" type="button" (click)="addSibling()">Add Sibling</button>
+      
+      <br><br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="familyForm.invalid">Save</button>
     </form>
   </mat-card-content>
 </mat-card>

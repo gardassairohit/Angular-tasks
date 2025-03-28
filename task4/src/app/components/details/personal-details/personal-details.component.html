@@ -3,34 +3,42 @@
     <mat-card-title>Personal Details</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (ngSubmit)="saveDetails()">
+    <form [formGroup]="personalDetailsForm" (ngSubmit)="saveDetails()">
       <mat-form-field appearance="outline">
-        <input matInput placeholder="First Name" [(ngModel)]="personalDetails.firstName" name="firstName" required pattern="[A-Za-z ]+" #firstName="ngModel">
-        <mat-error *ngIf="firstName.invalid && firstName.touched">First Name is required and should contain only letters.</mat-error>
+        <input matInput placeholder="First Name" formControlName="firstName">
+        <mat-error *ngIf="personalDetailsForm.get('firstName')?.invalid && personalDetailsForm.get('firstName')?.touched">
+          First Name is required and should contain only letters.
+        </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Last Name" [(ngModel)]="personalDetails.lastName" name="lastName" required pattern="[A-Za-z]+" #lastName="ngModel">
-        <mat-error *ngIf="lastName.invalid && lastName.touched">Last Name is required and should contain only letters.</mat-error>
+        <input matInput placeholder="Last Name" formControlName="lastName">
+        <mat-error *ngIf="personalDetailsForm.get('lastName')?.invalid && personalDetailsForm.get('lastName')?.touched">
+          Last Name is required and should contain only letters.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <input matInput [matDatepicker]="picker" placeholder="Date of Birth" [(ngModel)]="personalDetails.dateOfBirth" name="dateOfBirth" required #dateOfBirth="ngModel">
+        <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dateOfBirth">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="dateOfBirth.invalid && dateOfBirth.touched">Date of Birth is required.</mat-error>
+        <mat-error *ngIf="personalDetailsForm.get('dateOfBirth')?.invalid && personalDetailsForm.get('dateOfBirth')?.touched">
+          Date of Birth is required.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Gender</mat-label>
-        <mat-select [(ngModel)]="personalDetails.gender" name="gender" required #gender="ngModel">
+        <mat-select formControlName="gender">
           <mat-option value="Male">Male</mat-option>
           <mat-option value="Female">Female</mat-option>
         </mat-select>
-        <mat-error *ngIf="gender.invalid && gender.touched">Please select a gender.</mat-error>
+        <mat-error *ngIf="personalDetailsForm.get('gender')?.invalid && personalDetailsForm.get('gender')?.touched">
+          Please select a gender.
+        </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" [disabled]="firstName.invalid || lastName.invalid || dateOfBirth.invalid || gender.invalid">
+      <button mat-raised-button color="primary" type="submit" [disabled]="personalDetailsForm.invalid">
         Save
       </button>
     </form>

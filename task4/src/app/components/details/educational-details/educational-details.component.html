@@ -3,17 +3,32 @@
     <mat-card-title>Educational Details</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (ngSubmit)="saveDetails()">
+    <form [formGroup]="educationalDetailsForm" (ngSubmit)="saveDetails()">
+      
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Highest Degree" [(ngModel)]="educationalDetails.highestDegree" name="highestDegree" required #highestDegree="ngModel">
+        <input matInput placeholder="Highest Degree" formControlName="highestDegree">
+        <mat-error *ngIf="educationalDetailsForm.get('highestDegree')?.invalid && educationalDetailsForm.get('highestDegree')?.touched">
+          Highest Degree is required.
+        </mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Institution" [(ngModel)]="educationalDetails.institution" name="institution" required #institution="ngModel">
+        <input matInput placeholder="Institution" formControlName="institution">
+        <mat-error *ngIf="educationalDetailsForm.get('institution')?.invalid && educationalDetailsForm.get('institution')?.touched">
+          Institution is required.
+        </mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Year of Graduation" [(ngModel)]="educationalDetails.yearOfGraduation" name="yearOfGraduation" required #yearOfGraduation="ngModel">
+        <input matInput placeholder="Year of Graduation" formControlName="yearOfGraduation">
+        <mat-error *ngIf="educationalDetailsForm.get('yearOfGraduation')?.invalid && educationalDetailsForm.get('yearOfGraduation')?.touched">
+          Please enter a valid graduation year (e.g., 2025).
+        </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" [disabled]="highestDegree.invalid || institution.invalid || yearOfGraduation.invalid">Save</button>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="educationalDetailsForm.invalid">
+        Save
+      </button>
     </form>
   </mat-card-content>
 </mat-card>

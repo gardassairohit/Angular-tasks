@@ -3,14 +3,42 @@
     <mat-card-title>Achievements</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (ngSubmit)="saveDetails()">
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Awards" [(ngModel)]="achievements.awards" name="awards" required>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <input matInput placeholder="Certifications" [(ngModel)]="achievements.certifications" name="certifications" required>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Save</button>
+    <form [formGroup]="achievementsForm" (ngSubmit)="saveDetails()">
+      
+      <h3>Awards</h3>
+      <div formArrayName="awards">
+        <div *ngFor="let award of awards.controls; let i = index">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Award" [formControlName]="i">
+            <mat-error *ngIf="awards.at(i).invalid && awards.at(i).touched">
+              Award is required
+            </mat-error>
+          </mat-form-field>
+          <button mat-icon-button color="warn" (click)="removeAward(i)" *ngIf="awards.length > 1">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </div>
+      </div>
+      <button mat-raised-button color="accent" type="button" (click)="addAward()">Add Award</button>
+
+      <h3>Certifications</h3>
+      <div formArrayName="certifications">
+        <div *ngFor="let certification of certifications.controls; let i = index">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Certification" [formControlName]="i">
+            <mat-error *ngIf="certifications.at(i).invalid && certifications.at(i).touched">
+              Certification is required
+            </mat-error>
+          </mat-form-field>
+          <button mat-icon-button color="warn" (click)="removeCertification(i)" *ngIf="certifications.length > 1">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </div>
+      </div>
+      <button mat-raised-button color="accent" type="button" (click)="addCertification()">Add Certification</button>
+
+      <br><br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="achievementsForm.invalid">Save</button>
     </form>
   </mat-card-content>
 </mat-card>

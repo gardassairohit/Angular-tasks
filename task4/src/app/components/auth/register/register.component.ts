@@ -47,9 +47,22 @@ export class RegisterComponent {
   register() {
     if (this.registerForm.valid) {
       const user = this.registerForm.value;
-      this.authService.register(user).subscribe(() => {
-        this.router.navigate(['/login']);
+  
+      if (!user) { 
+        console.error("User data is null or undefined.");
+        return; 
+      }
+  
+      this.authService.register(user).subscribe({
+        next: () => {
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          console.error("Registration failed:", err);
+        }
       });
+    } else {
+      console.warn("Form is invalid. Please check the fields.");
     }
   }
 }
