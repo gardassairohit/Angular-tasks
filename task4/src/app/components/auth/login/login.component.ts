@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import Reactive Forms modules
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -47,15 +47,15 @@ export class LoginComponent {
         if (users.length > 0) {
           localStorage.setItem('currentUser', JSON.stringify(users[0]));
           if (!users[0].personalDetails) {
-            this.router.navigate(['/personal-details']);
+            this.router.navigate(['/details/personal-details']);
           } else if (!users[0].educationalDetails) {
-            this.router.navigate(['/educational-details']);
+            this.router.navigate(['/details/educational-details']);
           } else if (!users[0].achievements) {
-            this.router.navigate(['/achievements']);
+            this.router.navigate(['/details/achievements']);
           } else if (!users[0].familyDetails) {
-            this.router.navigate(['/family-details']);
+            this.router.navigate(['details/family-details']);
           } else {
-            this.router.navigate(['/user-list']);
+            this.router.navigate(['user/user-list']);
           }
         } else {
           alert('Invalid credentials');

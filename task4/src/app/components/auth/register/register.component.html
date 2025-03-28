@@ -30,9 +30,13 @@
           Password is required.
         </mat-error>
         <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
-          Password must be at least 6 characters.
+          Password must be at least 8 characters long.
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('pattern')">
+          Password must contain at least one uppercase letter, one number, and one special character.
         </mat-error>
       </mat-form-field>
+      
 
       <mat-form-field appearance="outline">
         <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">

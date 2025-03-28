@@ -1,23 +1,46 @@
 import { Routes } from '@angular/router';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
-import { PersonalDetailsComponent } from './components/personal-details/personal-details.component';
-import { EducationalDetailsComponent } from './components/educational-details/educational-details.component';
-import { AchievementsComponent } from './components/achievements/achievements.component';
-import { FamilyDetailsComponent } from './components/family-details/family-details.component';
-import { AuthGuard } from './guards/auth.guard'; // Import the AuthGuard
-import { LoginGuard } from './guards/login.guard';
-
+import { AuthGuard } from './guards/auth.guard';
 export const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] }, // Protected route
-  { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard] }, // Protected route
-  { path: 'user-details/:id', component: UserDetailsComponent, canActivate: [AuthGuard] }, // Protected route
-  { path: 'personal-details', component: PersonalDetailsComponent, canActivate: [AuthGuard] }, // Protected route
-  { path: 'educational-details', component: EducationalDetailsComponent, canActivate: [AuthGuard] }, // Protected route
-  { path: 'achievements', component: AchievementsComponent, canActivate: [AuthGuard] }, // Protected route
-  { path: 'family-details', component: FamilyDetailsComponent, canActivate: [AuthGuard] }, // Protected route
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  {
+    path: 'login',
+    loadComponent: () => import('./components/auth/login/login.component').then(m => m.LoginComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./components/auth/register/register.component').then(m => m.RegisterComponent)
+  },
+  {
+    path: 'details/achievements',
+    loadComponent: () => import('./components/details/achievements/achievements.component').then(m => m.AchievementsComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'details/educational-details',
+    loadComponent: () => import('./components/details/educational-details/educational-details.component').then(m => m.EducationalDetailsComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'details/family-details',
+    loadComponent: () => import('./components/details/family-details/family-details.component').then(m => m.FamilyDetailsComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'details/personal-details',
+    loadComponent: () => import('./components/details/personal-details/personal-details.component').then(m => m.PersonalDetailsComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user/user-list',
+    loadComponent: () => import('./components/user/user-list/user-list.component').then(m => m.UserListComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user/user-details/:id',
+    loadComponent: () => import('./components/user/user-details/user-details.component').then(m => m.UserDetailsComponent),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '', redirectTo: '/login', pathMatch: 'full' // Default route
+  }
 ];

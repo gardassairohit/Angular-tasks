@@ -338,6 +338,33 @@
         "motherName": "Srilatha",
         "siblings": "Sumeet, Akshaya"
       }
+    },
+    {
+      "id": "9fc3",
+      "username": "user99",
+      "email": "user99@gmail.com",
+      "password": "User@999",
+      "confirmPassword": "User@999",
+      "personalDetails": {
+        "firstName": "Sai Rohit",
+        "lastName": "Gardas",
+        "dateOfBirth": "04/05/2004",
+        "gender": "Male"
+      },
+      "educationalDetails": {
+        "highestDegree": "BTech",
+        "institution": "GCET",
+        "yearOfGraduation": "2025"
+      },
+      "achievements": {
+        "awards": "Best Event",
+        "certifications": "Internship"
+      },
+      "familyDetails": {
+        "fatherName": "Srisailam",
+        "motherName": "Srilatha",
+        "siblings": "Sumeet, Akshaya"
+      }
     }
   ]
 }

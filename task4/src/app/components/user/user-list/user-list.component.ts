@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
-import { User } from '../../models/user.model';
+import { User } from '../../../models/user.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
@@ -25,6 +25,6 @@ export class UserListComponent implements OnInit {
   }
 
   viewDetails(user: User) {
-    this.router.navigate(['/user-details', user.id]);
+    this.router.navigate(['/user/user-details', user.id]);
   }
 }

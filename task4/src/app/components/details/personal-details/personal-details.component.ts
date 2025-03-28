@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -53,7 +53,7 @@ export class PersonalDetailsComponent {
     const updatedUser = { ...currentUser, personalDetails: this.personalDetails };
     this.userService.updateUser(updatedUser).subscribe(() => {
       localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-      this.router.navigate(['/educational-details']);
+      this.router.navigate(['/details/educational-details']);
     });
   }  
 }  

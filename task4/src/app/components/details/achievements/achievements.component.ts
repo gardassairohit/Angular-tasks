@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -28,7 +28,7 @@ export class AchievementsComponent {
     const updatedUser = { ...currentUser, achievements: this.achievements };
     this.userService.updateUser(updatedUser).subscribe(() => {
       localStorage.setItem('currentUser', JSON.stringify(updatedUser)); // Update localStorage
-      this.router.navigate(['/family-details']);
+      this.router.navigate(['/details/family-details']);
     });
   }
 }
